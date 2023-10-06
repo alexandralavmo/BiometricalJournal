@@ -1,0 +1,16 @@
+Stringent scenario 
+Number of biomarkers initially modeled with a linear model:  12 
+Number of biomarkers tested for nonlinear modeling:  47 
+
+Number of linear biomarkers excluded because at least one longitudinal RSE is over  60 %:  2 
+Number of linear biomarkers excluded because at least one survival RSE is over  60 %:  9 
+Number of linear biomarkers excluded because the Wald test on the link coefficient is not significant:  0 
+Number of biomarkers selected with a linear model:  1 
+
+Number of nonlinear biomarkers excluded because the threshold for nonlinear residual error is over  0.3 :  31 
+Number of nonlinear biomarkers excluded because at least one longitudinal RSE is over  60 %:  16 
+Number of nonlinear biomarkers excluded because at least one survival RSE is over  60 %:  0 
+Number of nonlinear biomarkers excluded because the Wald test on the link coefficient is not significant:  0 
+Number of biomarkers selected with a nonlinear model:  0 
+
+

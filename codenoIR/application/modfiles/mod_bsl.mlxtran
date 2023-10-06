@@ -1,0 +1,55 @@
+<DATAFILE>
+
+[FILEINFO]
+file = 'sim_surv_monolix.txt'
+delimiter = space
+header = {id, time, obs, obs_id, score4C}
+
+[CONTENT]
+id = {use=identifier}
+time = {use=time}
+obs = {use=observation, name={y4, y5}, yname={'4', '5'}, type={event, event}}
+obs_id = {use=observationtype}
+score4C = {use=covariate, type=continuous}
+
+<MODEL>
+
+[COVARIATE]
+input = score4C
+
+[INDIVIDUAL]
+input = {h1_pop, h2_pop, hcov1_pop, hcov2_pop, score4C, beta_hcov1_score4C, beta_hcov2_score4C}
+
+DEFINITION:
+h1 = {distribution=logNormal, typical=h1_pop, no-variability}
+h2 = {distribution=logNormal, typical=h2_pop, no-variability}
+hcov1 = {distribution=normal, typical=hcov1_pop, covariate=score4C, coefficient=beta_hcov1_score4C, no-variability}
+hcov2 = {distribution=normal, typical=hcov2_pop, covariate=score4C, coefficient=beta_hcov2_score4C, no-variability}
+
+[LONGITUDINAL]
+file = 'mod_bsl.txt'
+<FIT>
+data = {y4, y5}
+model = {deces, domi}
+
+<PARAMETER>
+beta_hcov1_score4C = {value=0, method=MLE}
+beta_hcov2_score4C = {value=0, method=MLE}
+h1_pop = {value=1, method=MLE}
+h2_pop = {value=1, method=MLE}
+hcov1_pop = {value=0, method=FIXED}
+hcov2_pop = {value=0, method=FIXED}
+
+<MONOLIX>
+
+[TASKS]
+populationParameters()
+individualParameters(method = {conditionalMean, conditionalMode })
+fim(method = StochasticApproximation)
+logLikelihood(run = false,method = ImportanceSampling)
+plotResult(run = false,method = {outputplot, indfits, obspred, parameterdistribution, covariatemodeldiagnosis, randomeffects, covariancemodeldiagnosis, saemresults })
+
+[SETTINGS]
+GLOBAL:
+exportpath = 'mod_bsl'
+
