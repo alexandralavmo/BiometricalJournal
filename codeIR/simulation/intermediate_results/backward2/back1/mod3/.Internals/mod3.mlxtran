@@ -1,0 +1,75 @@
+<DATAFILE>
+
+[FILEINFO]
+file = '../../data3.txt'
+delimiter = space
+header = {id, time, obs, ytype}
+
+[CONTENT]
+id = {use=identifier}
+time = {use=time}
+obs = {use=observation, name={y2, y8, y9}, yname={'2', '8', '9'}, type={continuous, event, event}}
+ytype = {use=observationtype}
+
+<MODEL>
+
+[INDIVIDUAL]
+input = {b02_pop, omega_b02, b12_pop, omega_b12, p1_pop, g1_pop, p2_pop, g2_pop, alpha12_pop, alpha22_pop}
+
+DEFINITION:
+b02 = {distribution=normal, typical=b02_pop, sd=omega_b02}
+b12 = {distribution=normal, typical=b12_pop, sd=omega_b12}
+p1 = {distribution=logNormal, typical=p1_pop, no-variability}
+g1 = {distribution=logNormal, typical=g1_pop, no-variability}
+p2 = {distribution=logNormal, typical=p2_pop, no-variability}
+g2 = {distribution=logNormal, typical=g2_pop, no-variability}
+alpha12 = {distribution=normal, typical=alpha12_pop, no-variability}
+alpha22 = {distribution=normal, typical=alpha22_pop, no-variability}
+
+[LONGITUDINAL]
+input = {a_2}
+
+file = 'mod_2_3.txt'
+
+DEFINITION:
+y2 = {distribution=normal, prediction=m2, errorModel=constant(a_2)}
+
+<FIT>
+data = {y8, y9, y2}
+model = {deces, domi, y2}
+
+<PARAMETER>
+a_2 = {value=0.05, method=MLE}
+alpha12_pop = {value=-11, method=MLE}
+alpha22_pop = {value=0, method=MLE}
+b02_pop = {value=7.4, method=MLE}
+b12_pop = {value=0.003, method=MLE}
+g1_pop = {value=0.1, method=MLE}
+g2_pop = {value=0.1, method=MLE}
+omega_b02 = {value=0.04, method=MLE}
+omega_b12 = {value=0.005, method=MLE}
+p1_pop = {value=0.05, method=MLE}
+p2_pop = {value=0.1, method=MLE}
+
+<MONOLIX>
+
+[TASKS]
+populationParameters()
+individualParameters(method = {conditionalMean, conditionalMode })
+fim(method = StochasticApproximation)
+logLikelihood(run = false,method = ImportanceSampling)
+plotResult(run = false,method = {outputplot, indfits, obspred, parameterdistribution, covariatemodeldiagnosis, randomeffects, covariancemodeldiagnosis, saemresults })
+
+[SETTINGS]
+GLOBAL:
+exportpath = '../'
+nbchains = 3
+autochains = no
+
+POPULATION:
+smoothingiterations = 700
+exploratoryiterations = 1000
+
+FIM:
+maxiterations = 1000
+

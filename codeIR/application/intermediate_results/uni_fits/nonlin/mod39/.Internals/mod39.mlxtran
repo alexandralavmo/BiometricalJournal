@@ -1,0 +1,87 @@
+<DATAFILE>
+
+[FILEINFO]
+file = '../../../datas/data39.txt'
+delimiter = space
+header = {id, time, obs, ytype, score4C}
+
+[CONTENT]
+id = {use=identifier}
+time = {use=time}
+obs = {use=observation, name={y1, y60, y61}, yname={'1', '60', '61'}, type={continuous, event, event}}
+ytype = {use=observationtype}
+score4C = {use=covariate, type=continuous}
+
+<MODEL>
+
+[COVARIATE]
+input = score4C
+
+[INDIVIDUAL]
+input = {b0_pop, omega_b0, b1_pop, omega_b1, h1_pop, h2_pop, alpha1_pop, alpha2_pop, hcov1_pop, hcov2_pop, score4C, beta_hcov1_score4C, beta_hcov2_score4C, b2_pop, omega_b2, a_pop, omega_a}
+
+DEFINITION:
+b0 = {distribution=normal, typical=b0_pop, sd=omega_b0}
+b1 = {distribution=normal, typical=b1_pop, sd=omega_b1}
+h1 = {distribution=logNormal, typical=h1_pop, no-variability}
+h2 = {distribution=logNormal, typical=h2_pop, no-variability}
+alpha1 = {distribution=normal, typical=alpha1_pop, no-variability}
+alpha2 = {distribution=normal, typical=alpha2_pop, no-variability}
+hcov1 = {distribution=normal, typical=hcov1_pop, covariate=score4C, coefficient=beta_hcov1_score4C, no-variability}
+hcov2 = {distribution=normal, typical=hcov2_pop, covariate=score4C, coefficient=beta_hcov2_score4C, no-variability}
+b2 = {distribution=normal, typical=b2_pop, sd=omega_b2}
+a = {distribution=logNormal, typical=a_pop, sd=omega_a}
+
+[LONGITUDINAL]
+input = {e_b}
+
+file = 'mod_39.txt'
+
+DEFINITION:
+y1 = {distribution=normal, prediction=m, errorModel=proportional(e_b)}
+
+<FIT>
+data = {y60, y61, y1}
+model = {deces, domi, y1}
+
+<PARAMETER>
+a_pop = {value=1, method=MLE}
+alpha1_pop = {value=0, method=MLE}
+alpha2_pop = {value=0, method=MLE}
+b0_pop = {value=1, method=MLE}
+b1_pop = {value=1, method=MLE}
+b2_pop = {value=1, method=MLE}
+beta_hcov1_score4C = {value=0.357, method=MLE}
+beta_hcov2_score4C = {value=-0.143, method=MLE}
+e_b = {value=0.3, method=MLE}
+h1_pop = {value=0.003, method=MLE}
+h2_pop = {value=0.129, method=MLE}
+hcov1_pop = {value=0, method=FIXED}
+hcov2_pop = {value=0, method=FIXED}
+omega_a = {value=1, method=MLE}
+omega_b0 = {value=1, method=MLE}
+omega_b1 = {value=1, method=MLE}
+omega_b2 = {value=1, method=MLE}
+
+<MONOLIX>
+
+[TASKS]
+populationParameters()
+individualParameters(method = {conditionalMean, conditionalMode })
+fim(method = StochasticApproximation)
+logLikelihood(run = false,method = ImportanceSampling)
+plotResult(run = false,method = {outputplot, indfits, obspred, parameterdistribution, covariatemodeldiagnosis, randomeffects, covariancemodeldiagnosis, saemresults })
+
+[SETTINGS]
+GLOBAL:
+exportpath = '../'
+nbchains = 10
+autochains = no
+
+POPULATION:
+smoothingiterations = 500
+exploratoryiterations = 1000
+
+FIM:
+maxiterations = 1000
+

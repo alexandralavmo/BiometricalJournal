@@ -1,0 +1,62 @@
+********************************************************************************
+*                         mod11.mlxtran                                        *
+*                         August 12, 2023 at 16:23:45                          *
+*                         Monolix version : 5.0.1                              *
+********************************************************************************
+
+POPULATION PARAMETERS ESTIMATION _______________________________________________
+
+Fixed Effects ----------------------------     se_sa    rse(%)    pvalue
+b0_pop                         :     0.521    0.0489      9.37          
+b1_pop                         :     -1.36       nan       nan          
+b2_pop                         :      -1.5       0.7      46.8          
+a_pop                          :     0.214       nan       nan          
+h1_pop                         :   0.00109  0.000426      39.2          
+h2_pop                         :     0.108    0.0134      12.5          
+alpha1_pop                     :  5.35e-15  6.91e-09  1.29e+08          
+alpha2_pop                     : -1.16e-16     0.542  4.68e+17          
+hcov1_pop                      :         0                              
+beta_hcov1_score4C             :     0.232    0.0432      18.7  8.24e-08
+hcov2_pop                      :         0                              
+beta_hcov2_score4C             :    -0.126    0.0192      15.2   4.6e-11
+
+Standard Deviation of the Random Effects -
+omega_b0                       :   0.00912       nan       nan          
+omega_b1                       :     0.216     0.149      68.8          
+omega_b2                       :     0.358     0.534       149          
+omega_a                        :     0.543     0.635       117          
+
+Error Model Parameters -------------------
+e_b                            :      1.93     0.166       8.6          
+
+Elapsed time (seconds) :  5.9e+03
+CPU time     (seconds) :  3.1e+04
+ _______________________________________________________________________________
+
+
+CORRELATION MATRIX OF THE ESTIMATES ____________________________________________
+
+Fisher by Stochastic Approximation ---------------------------------------------
+Correlation Matrix :
+            b0_pop         1
+            b1_pop       nan       nan
+            b2_pop   0.87201       nan         1
+             a_pop       nan       nan       nan       nan
+            h1_pop-7.9597e-05       nan-8.4506e-05       nan         1
+            h2_pop  0.025581       nan  0.027161       nan-1.7965e-05         1
+        alpha1_pop-0.0033016       nan-0.0028953       nan1.3509e-05-7.6601e-05         1
+        alpha2_pop  -0.33658       nan  -0.35737       nan0.00023637 -0.076003 0.0011872         1
+beta_hcov1_score4C0.00010735       nan0.00011398       nan  -0.932732.4239e-05-4.8935e-06-0.00031892         1
+beta_hcov2_score4C-0.00077702       nan-0.0008251       nan5.4426e-07  -0.84358-0.00012255 0.0023097-7.3601e-07         1
+          omega_b0       nan       nan       nan       nan       nan       nan       nan       nan       nan       nan       nan
+          omega_b1  -0.20835       nan  -0.20839       nan2.4295e-05-0.00780820.00095466   0.10274-3.2768e-050.00023718       nan         1
+          omega_b2  -0.89914       nan  -0.85845       nan8.1166e-05 -0.026083 0.0038163   0.34319-0.000109460.00079222       nan   0.25699         1
+           omega_a   0.84524       nan   0.71535       nan-6.6749e-05  0.021452-0.0028027  -0.282259.0026e-05-0.00065159       nan  -0.23364  -0.78241         1
+               e_b   -0.9771       nan  -0.80951       nan7.5489e-05  -0.02426 0.0032734    0.3192-0.000101810.00073688       nan   0.19033   0.87568  -0.83505         1
+WARNING : Impossible to compute the eigen values of the correlation matrix.
+
+Elapsed time (seconds) : 3.9e+03
+CPU time     (seconds) : 2.7e+04
+ -------------------------------------------------------------------------------
+ _______________________________________________________________________________
+

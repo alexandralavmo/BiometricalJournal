@@ -1,0 +1,31 @@
+********************************************************************************
+*                         mod7.mlxtran                                         *
+*                         August 21, 2023 at 21:52:18                          *
+*                         Monolix version : 5.0.1                              *
+********************************************************************************
+
+POPULATION PARAMETERS ESTIMATION _______________________________________________
+
+Fixed Effects ----------------------------
+b0_pop                         :      93.3
+b1_pop                         :     0.402
+h1_pop                         :  0.000595
+h2_pop                         :     0.105
+alpha1_pop                     :   -0.0449
+alpha2_pop                     :    0.0315
+hcov1_pop                      :         0
+beta_hcov1_score4C             :     0.252
+hcov2_pop                      :         0
+beta_hcov2_score4C             :    -0.122
+
+Standard Deviation of the Random Effects -
+omega_b0                       :      25.8
+omega_b1                       :     0.834
+
+Error Model Parameters -------------------
+e_a                            :      11.6
+
+Elapsed time (seconds) :  2.8e+03
+CPU time     (seconds) :  2.2e+04
+ _______________________________________________________________________________
+

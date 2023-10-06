@@ -1,0 +1,16 @@
+Current scenario 
+Number of biomarkers initially modeled with a linear model:  21 
+Number of biomarkers tested for nonlinear modeling:  38 
+
+Number of linear biomarkers excluded because at least one longitudinal RSE is over  100 %:  1 
+Number of linear biomarkers excluded because at least one survival RSE is over  100 %:  12 
+Number of linear biomarkers excluded because the Wald test on the link coefficient is not significant:  5 
+Number of biomarkers selected with a linear model:  3 
+
+Number of nonlinear biomarkers excluded because the threshold for nonlinear residual error is over  0.5 :  17 
+Number of nonlinear biomarkers excluded because at least one longitudinal RSE is over  100 %:  21 
+Number of nonlinear biomarkers excluded because at least one survival RSE is over  100 %:  0 
+Number of nonlinear biomarkers excluded because the Wald test on the link coefficient is not significant:  0 
+Number of biomarkers selected with a nonlinear model:  0 
+
+

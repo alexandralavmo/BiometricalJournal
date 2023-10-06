@@ -1,0 +1,20 @@
+DESCRIPTION : Joint Model
+
+[LONGITUDINAL]
+input={ b02, b12, b03, b13, p1, g1, p2, g2, alpha12, alpha13, alpha22, alpha23 }
+
+EQUATION : 
+
+m2 = b02 + b12*t
+m3 = b03 + b13*t
+
+haz1 = (p1*g1*exp(-g1*t)/(1-p1*(1-exp(-g1*t)))) * exp( +alpha12*(m2-7.4378842926145) +alpha13*(m3-2.29981505748955) )
+haz2 = (p2*g2*exp(-g2*t)/(1-p2*(1-exp(-g2*t)))) * exp( +alpha22*(m2-7.4378842926145) +alpha23*(m3-2.29981505748955) )
+
+
+DEFINITION:
+deces = {type=event, maxEventNumber= 1, hazard=haz1}
+domi = {type=event, maxEventNumber=1, hazard=haz2}
+
+OUTPUT:
+output={ m2, m3, deces, domi}

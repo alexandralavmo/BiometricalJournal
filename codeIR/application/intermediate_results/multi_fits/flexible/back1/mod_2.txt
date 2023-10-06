@@ -1,0 +1,19 @@
+DESCRIPTION : Joint Model
+
+[LONGITUDINAL]
+input={ b02, b12, h1, h2, alpha12, alpha22, hcov1, hcov2 }
+
+EQUATION : 
+
+m2 = b02 + b12*t
+
+haz1 = h1 * exp( +alpha12*(m2-6.013340) +hcov1)
+haz2 = h2 * exp( +alpha22*(m2-6.013340) +hcov2)
+
+
+DEFINITION:
+deces = {type=event, maxEventNumber= 1, hazard=haz1}
+domi = {type=event, maxEventNumber=1, hazard=haz2}
+
+OUTPUT:
+output={ m2, deces, domi}

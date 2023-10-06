@@ -1,0 +1,14 @@
+parameter,value
+b0_pop,93.2905
+b1_pop,0.4019777
+h1_pop,0.0005952726
+h2_pop,0.1046142
+alpha1_pop,-0.04491323
+alpha2_pop,0.03146947
+hcov1_pop,0
+beta_hcov1_score4C,0.2516523
+hcov2_pop,0
+beta_hcov2_score4C,-0.1215452
+omega_b0,25.8052
+omega_b1,0.8344313
+e_a,11.5592

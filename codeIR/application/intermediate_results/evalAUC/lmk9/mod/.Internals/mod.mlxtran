@@ -1,0 +1,96 @@
+<DATAFILE>
+
+[FILEINFO]
+file = '../../data_lmk.txt'
+delimiter = space
+header = {id, time, obs, ytype, score4C}
+
+[CONTENT]
+id = {use=identifier}
+time = {use=time}
+obs = {use=observation, name={y2, y3, y4, y5}, yname={'2', '3', '4', '5'}, type={continuous, continuous, event, event}}
+ytype = {use=observationtype}
+score4C = {use=covariate, type=continuous}
+
+<MODEL>
+
+[COVARIATE]
+input = score4C
+
+[INDIVIDUAL]
+input = {b02_pop, omega_b02, b12_pop, omega_b12, b03_pop, omega_b03, b13_pop, omega_b13, h1_pop, h2_pop, alpha12_pop, alpha13_pop, alpha22_pop, alpha23_pop, hcov1_pop, hcov2_pop, score4C, beta_hcov1_score4C, beta_hcov2_score4C}
+
+DEFINITION:
+b02 = {distribution=normal, typical=b02_pop, sd=omega_b02}
+b12 = {distribution=normal, typical=b12_pop, sd=omega_b12}
+b03 = {distribution=normal, typical=b03_pop, sd=omega_b03}
+b13 = {distribution=normal, typical=b13_pop, sd=omega_b13}
+h1 = {distribution=logNormal, typical=h1_pop, no-variability}
+h2 = {distribution=logNormal, typical=h2_pop, no-variability}
+alpha12 = {distribution=normal, typical=alpha12_pop, no-variability}
+alpha13 = {distribution=normal, typical=alpha13_pop, no-variability}
+alpha22 = {distribution=normal, typical=alpha22_pop, no-variability}
+alpha23 = {distribution=normal, typical=alpha23_pop, no-variability}
+hcov1 = {distribution=normal, typical=hcov1_pop, covariate=score4C, coefficient=beta_hcov1_score4C, no-variability}
+hcov2 = {distribution=normal, typical=hcov2_pop, covariate=score4C, coefficient=beta_hcov2_score4C, no-variability}
+
+[LONGITUDINAL]
+input = {a_2, a_3}
+
+file = 'mod_23.txt'
+
+DEFINITION:
+y2 = {distribution=normal, prediction=m2, errorModel=constant(a_2)}
+y3 = {distribution=normal, prediction=m3, errorModel=constant(a_3)}
+
+<FIT>
+data = {y4, y5, y2, y3}
+model = {deces, domi, y2, y3}
+
+<PARAMETER>
+a_2 = {value=0.6950581, method=FIXED}
+a_3 = {value=1.29331, method=FIXED}
+alpha12_pop = {value=0.4978851, method=FIXED}
+alpha13_pop = {value=0.4700881, method=FIXED}
+alpha22_pop = {value=-0.2668553, method=FIXED}
+alpha23_pop = {value=-0.5051688, method=FIXED}
+b02_pop = {value=4.24452, method=FIXED}
+b03_pop = {value=5.59548, method=FIXED}
+b12_pop = {value=-0.1562047, method=FIXED}
+b13_pop = {value=0.04765306, method=FIXED}
+beta_hcov1_score4C = {value=0.3353692, method=FIXED}
+beta_hcov2_score4C = {value=-0.1595027, method=FIXED}
+h1_pop = {value=0.0004260913, method=FIXED}
+h2_pop = {value=0.1034865, method=FIXED}
+hcov1_pop = {value=0, method=FIXED}
+hcov2_pop = {value=0, method=FIXED}
+omega_b02 = {value=0.9696814, method=FIXED}
+omega_b03 = {value=1.65676, method=FIXED}
+omega_b12 = {value=0.1659249, method=FIXED}
+omega_b13 = {value=0.06549938, method=FIXED}
+
+<MONOLIX>
+
+[TASKS]
+populationParameters()
+individualParameters(method = conditionalMean)
+fim(method = StochasticApproximation)
+logLikelihood(run = false,method = ImportanceSampling)
+plotResult(run = false,method = {outputplot, indfits, obspred, parameterdistribution, covariatemodeldiagnosis, randomeffects, covariancemodeldiagnosis, saemresults })
+
+[SETTINGS]
+GLOBAL:
+exportpath = '../'
+nbchains = 3
+autochains = no
+
+POPULATION:
+smoothingiterations = 500
+exploratoryiterations = 1000
+
+INDIVIDUAL:
+nbsimulatedparameters = 100
+
+FIM:
+maxiterations = 1000
+

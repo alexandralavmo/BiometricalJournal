@@ -1,0 +1,153 @@
+<DATAFILE>
+
+[FILEINFO]
+file = '../../data67.txt'
+delimiter = space
+header = {id, time, obs, ytype}
+
+[CONTENT]
+id = {use=identifier}
+time = {use=time}
+obs = {use=observation, name={y1, y2, y3, y4, y5, y6, y7, y8, y9}, yname={'1', '2', '3', '4', '5', '6', '7', '8', '9'}, type={continuous, continuous, continuous, continuous, continuous, continuous, continuous, event, event}}
+ytype = {use=observationtype}
+
+<MODEL>
+
+[INDIVIDUAL]
+input = {b01_pop, omega_b01, b11_pop, omega_b11, b21_pop, omega_b21, a1_pop, omega_a1, b02_pop, omega_b02, b12_pop, omega_b12, b03_pop, omega_b03, b13_pop, omega_b13, p1_pop, g1_pop, p2_pop, g2_pop, alpha11_pop, alpha12_pop, alpha13_pop, alpha21_pop, alpha22_pop, alpha23_pop, b04_pop, omega_b04, b14_pop, omega_b14, b05_pop, omega_b05, b15_pop, omega_b15, b06_pop, omega_b06, b16_pop, omega_b16, b07_pop, omega_b07, b17_pop, omega_b17, alpha14_pop, alpha15_pop, alpha16_pop, alpha17_pop, alpha24_pop, alpha25_pop, alpha26_pop, alpha27_pop}
+
+DEFINITION:
+b01 = {distribution=normal, typical=b01_pop, sd=omega_b01}
+b11 = {distribution=normal, typical=b11_pop, sd=omega_b11}
+b21 = {distribution=normal, typical=b21_pop, sd=omega_b21}
+a1 = {distribution=logNormal, typical=a1_pop, sd=omega_a1}
+b02 = {distribution=normal, typical=b02_pop, sd=omega_b02}
+b12 = {distribution=normal, typical=b12_pop, sd=omega_b12}
+b03 = {distribution=normal, typical=b03_pop, sd=omega_b03}
+b13 = {distribution=normal, typical=b13_pop, sd=omega_b13}
+p1 = {distribution=logNormal, typical=p1_pop, no-variability}
+g1 = {distribution=logNormal, typical=g1_pop, no-variability}
+p2 = {distribution=logNormal, typical=p2_pop, no-variability}
+g2 = {distribution=logNormal, typical=g2_pop, no-variability}
+alpha11 = {distribution=normal, typical=alpha11_pop, no-variability}
+alpha12 = {distribution=normal, typical=alpha12_pop, no-variability}
+alpha13 = {distribution=normal, typical=alpha13_pop, no-variability}
+alpha21 = {distribution=normal, typical=alpha21_pop, no-variability}
+alpha22 = {distribution=normal, typical=alpha22_pop, no-variability}
+alpha23 = {distribution=normal, typical=alpha23_pop, no-variability}
+b04 = {distribution=normal, typical=b04_pop, sd=omega_b04}
+b14 = {distribution=normal, typical=b14_pop, sd=omega_b14}
+b05 = {distribution=normal, typical=b05_pop, sd=omega_b05}
+b15 = {distribution=normal, typical=b15_pop, sd=omega_b15}
+b06 = {distribution=normal, typical=b06_pop, sd=omega_b06}
+b16 = {distribution=normal, typical=b16_pop, sd=omega_b16}
+b07 = {distribution=normal, typical=b07_pop, sd=omega_b07}
+b17 = {distribution=normal, typical=b17_pop, sd=omega_b17}
+alpha14 = {distribution=normal, typical=alpha14_pop, no-variability}
+alpha15 = {distribution=normal, typical=alpha15_pop, no-variability}
+alpha16 = {distribution=normal, typical=alpha16_pop, no-variability}
+alpha17 = {distribution=normal, typical=alpha17_pop, no-variability}
+alpha24 = {distribution=normal, typical=alpha24_pop, no-variability}
+alpha25 = {distribution=normal, typical=alpha25_pop, no-variability}
+alpha26 = {distribution=normal, typical=alpha26_pop, no-variability}
+alpha27 = {distribution=normal, typical=alpha27_pop, no-variability}
+
+[LONGITUDINAL]
+input = {b_1, a_2, a_3, a_4, b_5, b_6, b_7}
+
+file = 'mod_1234567_67.txt'
+
+DEFINITION:
+y1 = {distribution=normal, prediction=m1, errorModel=proportional(b_1)}
+y2 = {distribution=normal, prediction=m2, errorModel=constant(a_2)}
+y3 = {distribution=normal, prediction=m3, errorModel=constant(a_3)}
+y4 = {distribution=normal, prediction=m4, errorModel=constant(a_4)}
+y5 = {distribution=normal, prediction=m5, errorModel=proportional(b_5)}
+y6 = {distribution=normal, prediction=m6, errorModel=proportional(b_6)}
+y7 = {distribution=normal, prediction=m7, errorModel=proportional(b_7)}
+
+<FIT>
+data = {y8, y9, y1, y2, y3, y4, y5, y6, y7}
+model = {deces, domi, y1, y2, y3, y4, y5, y6, y7}
+
+<PARAMETER>
+a1_pop = {value=5.3, method=MLE}
+a_2 = {value=0.05, method=MLE}
+a_3 = {value=0.7, method=MLE}
+a_4 = {value=0.7, method=MLE}
+alpha11_pop = {value=0.14, method=MLE}
+alpha12_pop = {value=-11, method=MLE}
+alpha13_pop = {value=0.6, method=MLE}
+alpha14_pop = {value=0, method=MLE}
+alpha15_pop = {value=0, method=MLE}
+alpha16_pop = {value=0, method=MLE}
+alpha17_pop = {value=0, method=MLE}
+alpha21_pop = {value=0, method=MLE}
+alpha22_pop = {value=0, method=MLE}
+alpha23_pop = {value=0, method=MLE}
+alpha24_pop = {value=0, method=MLE}
+alpha25_pop = {value=0, method=MLE}
+alpha26_pop = {value=0, method=MLE}
+alpha27_pop = {value=0, method=MLE}
+b01_pop = {value=4.6, method=MLE}
+b02_pop = {value=7.4, method=MLE}
+b03_pop = {value=4.2, method=MLE}
+b04_pop = {value=5.2, method=MLE}
+b05_pop = {value=7, method=MLE}
+b06_pop = {value=5.2, method=MLE}
+b07_pop = {value=338, method=MLE}
+b11_pop = {value=-0.15, method=MLE}
+b12_pop = {value=0.003, method=MLE}
+b13_pop = {value=-0.16, method=MLE}
+b14_pop = {value=0.02, method=MLE}
+b15_pop = {value=-0.05, method=MLE}
+b16_pop = {value=-0.07, method=MLE}
+b17_pop = {value=-5, method=MLE}
+b21_pop = {value=-0.16, method=MLE}
+b_1 = {value=0.3, method=MLE}
+b_5 = {value=0.08, method=MLE}
+b_6 = {value=0.1, method=MLE}
+b_7 = {value=0.2, method=MLE}
+g1_pop = {value=0.1, method=MLE}
+g2_pop = {value=0.1, method=MLE}
+omega_a1 = {value=0.8, method=MLE}
+omega_b01 = {value=2, method=MLE}
+omega_b02 = {value=0.04, method=MLE}
+omega_b03 = {value=0.9, method=MLE}
+omega_b04 = {value=1.7, method=MLE}
+omega_b05 = {value=0.8, method=MLE}
+omega_b06 = {value=0.7, method=MLE}
+omega_b07 = {value=107, method=MLE}
+omega_b11 = {value=0.1, method=MLE}
+omega_b12 = {value=0.005, method=MLE}
+omega_b13 = {value=0.15, method=MLE}
+omega_b14 = {value=0.08, method=MLE}
+omega_b15 = {value=0.1, method=MLE}
+omega_b16 = {value=0.09, method=MLE}
+omega_b17 = {value=5, method=MLE}
+omega_b21 = {value=0.07, method=MLE}
+p1_pop = {value=0.05, method=MLE}
+p2_pop = {value=0.1, method=MLE}
+
+<MONOLIX>
+
+[TASKS]
+populationParameters()
+individualParameters(method = {conditionalMean, conditionalMode })
+fim(method = StochasticApproximation)
+logLikelihood(run = false,method = ImportanceSampling)
+plotResult(run = false,method = {outputplot, indfits, obspred, parameterdistribution, covariatemodeldiagnosis, randomeffects, covariancemodeldiagnosis, saemresults })
+
+[SETTINGS]
+GLOBAL:
+exportpath = '../'
+nbchains = 3
+autochains = no
+
+POPULATION:
+smoothingiterations = 700
+exploratoryiterations = 1000
+
+FIM:
+maxiterations = 1000
+

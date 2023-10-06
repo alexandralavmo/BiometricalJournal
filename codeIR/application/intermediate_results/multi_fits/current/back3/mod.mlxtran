@@ -1,0 +1,105 @@
+<DATAFILE>
+
+[FILEINFO]
+file = 'data.txt'
+delimiter = space
+header = {id, time, obs, ytype, score4C}
+
+[CONTENT]
+id = {use=identifier}
+time = {use=time}
+obs = {use=observation, name={ y1, y2, y3, y4, y5}, yname={ '1', '2', '3', '4', '5'}, type={continuous, continuous, continuous, event, event}}
+ytype = {use=observationtype}
+score4C = {use=covariate, type=continuous}
+
+<MODEL>
+
+[COVARIATE]
+input = score4C
+
+[INDIVIDUAL]
+input = {b01_pop, omega_b01, b11_pop, omega_b11, b02_pop, omega_b02, b12_pop, omega_b12, b03_pop, omega_b03, b13_pop, omega_b13, h1_pop, h2_pop, alpha11_pop, alpha12_pop, alpha13_pop, alpha21_pop, alpha22_pop, alpha23_pop, hcov1_pop, hcov2_pop, score4C, beta_hcov1_score4C, beta_hcov2_score4C}
+
+DEFINITION:
+b01 = {distribution=normal, typical=b01_pop, sd=omega_b01}
+b11 = {distribution=normal, typical=b11_pop, sd=omega_b11}
+b02 = {distribution=normal, typical=b02_pop, sd=omega_b02}
+b12 = {distribution=normal, typical=b12_pop, sd=omega_b12}
+b03 = {distribution=normal, typical=b03_pop, sd=omega_b03}
+b13 = {distribution=normal, typical=b13_pop, sd=omega_b13}
+h1 = {distribution=logNormal, typical=h1_pop, no-variability}
+h2 = {distribution=logNormal, typical=h2_pop, no-variability}
+alpha11 = {distribution=normal, typical=alpha11_pop, no-variability}
+alpha12 = {distribution=normal, typical=alpha12_pop, no-variability}
+alpha13 = {distribution=normal, typical=alpha13_pop, no-variability}
+alpha21 = {distribution=normal, typical=alpha21_pop, no-variability}
+alpha22 = {distribution=normal, typical=alpha22_pop, no-variability}
+alpha23 = {distribution=normal, typical=alpha23_pop, no-variability}
+hcov1 = {distribution=normal, typical=hcov1_pop, covariate=score4C, coefficient=beta_hcov1_score4C, no-variability}
+hcov2 = {distribution=normal, typical=hcov2_pop, covariate=score4C, coefficient=beta_hcov2_score4C, no-variability}
+
+[LONGITUDINAL]
+input = { a_1, a_2, a_3}
+
+file = 'mod_123.txt'
+
+DEFINITION:
+y1 = {distribution=normal, prediction=m1, errorModel=constant(a_1)}
+y2 = {distribution=normal, prediction=m2, errorModel=constant(a_2)}
+y3 = {distribution=normal, prediction=m3, errorModel=constant(a_3)}
+
+<FIT>
+data = {y4, y5, y1, y2, y3}
+model = {deces, domi, y1, y2, y3}
+
+<PARAMETER>
+a_1 = {value=1, method=MLE}
+a_2 = {value=1, method=MLE}
+a_3 = {value=1, method=MLE}
+alpha11_pop = {value=0, method=MLE}
+alpha12_pop = {value=0, method=MLE}
+alpha13_pop = {value=0, method=MLE}
+alpha21_pop = {value=0, method=MLE}
+alpha22_pop = {value=0, method=MLE}
+alpha23_pop = {value=0, method=MLE}
+b01_pop = {value=1, method=MLE}
+b02_pop = {value=1, method=MLE}
+b03_pop = {value=1, method=MLE}
+b11_pop = {value=1, method=MLE}
+b12_pop = {value=1, method=MLE}
+b13_pop = {value=1, method=MLE}
+beta_hcov1_score4C = {value=0, method=MLE}
+beta_hcov2_score4C = {value=0, method=MLE}
+h1_pop = {value=1, method=MLE}
+h2_pop = {value=1, method=MLE}
+hcov1_pop = {value=0, method=FIXED}
+hcov2_pop = {value=0, method=FIXED}
+omega_b01 = {value=1, method=MLE}
+omega_b02 = {value=1, method=MLE}
+omega_b03 = {value=1, method=MLE}
+omega_b11 = {value=1, method=MLE}
+omega_b12 = {value=1, method=MLE}
+omega_b13 = {value=1, method=MLE}
+
+<MONOLIX>
+
+[TASKS]
+populationParameters()
+individualParameters(method = {conditionalMean, conditionalMode })
+fim(method = StochasticApproximation)
+logLikelihood(run = false,method = ImportanceSampling)
+plotResult(run = false,method = {outputplot, indfits, obspred, parameterdistribution, covariatemodeldiagnosis, randomeffects, covariancemodeldiagnosis, saemresults })
+
+[SETTINGS]
+GLOBAL:
+exportpath = 'mod'
+nbchains = 3
+autochains = no
+
+POPULATION:
+smoothingiterations = 500
+exploratoryiterations = 1000
+
+FIM:
+maxiterations = 1000
+

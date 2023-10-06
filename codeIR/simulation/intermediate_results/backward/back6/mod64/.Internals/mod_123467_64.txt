@@ -1,0 +1,24 @@
+DESCRIPTION : Joint Model
+
+[LONGITUDINAL]
+input={ b01, b11, b21, a1, b02, b12, b03, b13, b04, b14, b06, b16, b07, b17, p1, g1, p2, g2, alpha11, alpha12, alpha13, alpha14, alpha16, alpha17, alpha21, alpha22, alpha23, alpha24, alpha26, alpha27 }
+
+EQUATION : 
+
+m1 = b01 + a1*(exp(b11*t)-exp(b21*t))
+m2 = b02 + b12*t
+m3 = b03 + b13*t
+m4 = b04 + b14*t
+m6 = b06 + b16*t
+m7 = b07 + b17*t
+
+haz1 = (p1*g1*exp(-g1*t)/(1-p1*(1-exp(-g1*t)))) * exp( +alpha11*(m1-4.31993648337009) +alpha12*(m2-7.4472502255032) +alpha13*(m3-2.39152315320995) +alpha14*(m4-5.75359199930103) +alpha16*(m6-4.4115544448822) +alpha17*(m7-254.330359874627) )
+haz2 = (p2*g2*exp(-g2*t)/(1-p2*(1-exp(-g2*t)))) * exp( +alpha21*(m1-4.31993648337009) +alpha22*(m2-7.4472502255032) +alpha23*(m3-2.39152315320995) +alpha24*(m4-5.75359199930103) +alpha26*(m6-4.4115544448822) +alpha27*(m7-254.330359874627) )
+
+
+DEFINITION:
+deces = {type=event, maxEventNumber= 1, hazard=haz1}
+domi = {type=event, maxEventNumber=1, hazard=haz2}
+
+OUTPUT:
+output={ m1, m2, m3, m4, m6, m7, deces, domi}

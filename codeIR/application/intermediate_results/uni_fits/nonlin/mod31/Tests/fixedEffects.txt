@@ -1,0 +1,3 @@
+parameter,statistic(sa),p-value(sa)
+beta_hcov1_score4C,4.99808,5.79e-07
+beta_hcov2_score4C,4.9856,6.18e-07

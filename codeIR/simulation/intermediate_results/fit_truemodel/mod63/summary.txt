@@ -1,0 +1,49 @@
+********************************************************************************
+*                          mod63.mlxtran                                       *
+*                          June 10, 2023 at 00:00:56                           *
+*                          Monolix version : 5.0.1                             *
+********************************************************************************
+
+POPULATION PARAMETERS ESTIMATION _______________________________________________
+
+Fixed Effects ----------------------------
+b01_pop                        :      4.67
+b11_pop                        :    -0.136
+b21_pop                        :    -0.153
+a1_pop                         :      4.27
+b02_pop                        :       7.4
+b12_pop                        :   0.00269
+b03_pop                        :      4.13
+b13_pop                        :    -0.147
+p1_pop                         :    0.0318
+g1_pop                         :     0.132
+p2_pop                         :      0.78
+g2_pop                         :     0.127
+alpha11_pop                    :     0.143
+alpha12_pop                    :     -8.53
+alpha13_pop                    :     0.633
+alpha21_pop                    :   -0.0979
+alpha22_pop                    : -0.000139
+alpha23_pop                    :    -0.207
+
+Standard Deviation of the Random Effects -
+omega_b01                      :       1.9
+omega_b11                      :     0.101
+omega_b21                      :    0.0705
+omega_a1                       :     0.886
+omega_b02                      :    0.0394
+omega_b12                      :   0.00474
+omega_b03                      :      0.83
+omega_b13                      :     0.168
+
+Error Model Parameters -------------------
+b_1                            :     0.311
+
+a_2                            :    0.0492
+
+a_3                            :     0.696
+
+Elapsed time (seconds) :  1.8e+03
+CPU time     (seconds) :  1.4e+04
+ _______________________________________________________________________________
+
