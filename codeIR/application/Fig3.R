@@ -11,5 +11,5 @@ plot_mark(43)
 # arranging plot 
 plot_grid(gp24, gp43, ncol = 2, byrow = T)
 
-# save results 
+# save results
 ggsave("Fig3.png", path = "../results", device = "png", width = 20, height = 12, units = "cm", dpi = 800)
