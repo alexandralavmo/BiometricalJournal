@@ -72,7 +72,7 @@ To reproduce a single figure or table, just run the R script whose name correspo
 (e.g. To reproduce Figure 1, you must run Fig1.R; to reproduce Table S1, you must run TabS1.R)
 By default, these scripts use pre-computed intermediate results. If you do not want to use these intermediate result and compute them
 from scratch, you must set the variable interresults = F in the R script files (or use the other version of the code available at 
-https://iame.catibiomed.fr/index.php/s/kRoENdS5gG1COuh, in which intermediate results are not provided).
+https://github.com/alexandralavmo/BiometricalJournal/tree/main/codenoIR, in which intermediate results are not provided).
 
 The location where intermediate results are stored is explicitly indicated in each file.
 Figure and tables are saved in folder "results".
@@ -105,7 +105,7 @@ To reproduce a single figure or table, just run the R script whose name correspo
 (e.g. To reproduce Figure 6, you must run Fig6.R; to reproduce Table 6, you must run Tab6.R)
 By default, these scripts use pre-computed intermediate results. If you do not want to use these intermediate result and compute them
 from scratch, you must set the variable interresults = F in the R script files (or use the other version of the code available at 
-https://iame.catibiomed.fr/index.php/s/kRoENdS5gG1COuh, in which intermediate results are not provided).
+https://github.com/alexandralavmo/BiometricalJournal/tree/main/codenoIR, in which intermediate results are not provided).
 
 The location where intermediate results are stored is explicitly indicated in each file.
 Figure and tables are saved in folder "results".
