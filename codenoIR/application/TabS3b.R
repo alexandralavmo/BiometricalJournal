@@ -12,34 +12,28 @@ source("functions.R")
 # 1. Runing functions performing the analysis
 ###############
 
-# Warning: the intermediate results are not provided in this version of the code
-# Please, refer to the README file for further details
+# set interresults = TRUE if you want to rely on intermediate results (beware that the intermediate results are not provided in this version)
+# the version with intermediate results is available at https://github.com/alexandralavmo/BiometricalJournal/tree/main/codeIR)
 
-# Executes the script that fits all the univariate joint models with the linear modeling (writes in subfolder 
-# "intermediate_results/uni_fits/lin")
-# Warning: time consuming (several days)... to be run on a computing cluster
-source("fit.R")  
-
-# Executes the script that fits the univariate joint models with the nonlinear modeling (writes in subfolder 
-# "intermediate_results/uni_fits/nonlin")
-# Warning: time consuming (several days)... to be run on a computing cluster
-source("fit_nl.R") 
-
-# Executes the script that performs the backward strategy under the current scenario (uses subfolder "intermediate_results/uni_fits/" 
-# and writes in subfolder "intermediate_results/multi_fits/current")
-source("fit_multi_current.R")
-
-# Executes the script that performs the backward strategy under the flexible scenario (uses subfolder "intermediate_results/uni_fits/" 
-# and writes in subfolder "intermediate_results/multi_fits/flexible")
-source("fit_multi_flex.R")
-
-# Executes the script that performs the backward strategy under the stringent scenario (uses subfolder "intermediate_results/uni_fits/" 
-# and writes in subfolder "intermediate_results/multi_fits/stringent")
-source("fit_multi_strin.R")
-
-# Executes the script that computes ROC AUC for all scenarios of the sensibility analysis (uses subfolder "intermediate_results/multi_fits/" 
-# and writes in subfolder "intermediate_results/compAUC")
-source("AUC_all_scenarios.R")                           
+interresults <- FALSE
+if (!interresults) {
+source("fit.R") # Executes this script that fits all the univariate joint models with the linear modeling (writes in subfolder "intermediate_results/uni_fits/lin")
+		# Warning: time consuming... to be run on a computing cluster
+source("fit_nl.R") # Executes the script that fits the univariate joint models with the nonlinear modeling (writes in subfolder "intermediate_results/uni_fits/nonlin")
+		   # Warning: time consuming... to be run on a computing cluster
+source("fit_multi_current.R") # Executes the script that performs the backward strategy under current scenario (uses subfolder "intermediate_results/uni_fits/" and 
+			      # writes in subfolder "intermediate_results/multi_fits/current")
+source("fit_multi_flex.R") # Executes the script that performs the backward strategy under the current scenario (uses subfolder "intermediate_results/uni_fits/" and writes 
+			   # in subfolder "intermediate_results/multi_fits/current")
+			   # Warning: time consuming... to be run on a computing cluster
+source("eval_AUC_current.R")  # Executes the script that simulates individual parameters and derives ROC AUC for all landmark and horizon times under the current joint model 
+			      # (uses subfolder "intermediate_results/multi_fits/current" and writes in subfolder "intermediate_results/evalAUC")
+source("fit_multi_strin.R") # Executes the script that performs the backward strategy under the stringent scenario (uses subfolder "intermediate_results/uni_fits/" and writes 
+			    # in subfolder "intermediate_results/multi_fits/stringent")
+source("AUC_all_scenarios.R") # Executes the script that computes ROC AUC for all scenarios of the sensibility analysis (uses subfolder "intermediate_results/multi_fits/" and 
+			      # writes in subfolder "intermediate_results/compAUC")
+}
+ 
 
 ###############
 # 2. Creating Table S3b 

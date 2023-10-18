@@ -11,8 +11,7 @@ source("functions.R")
 # 1. Runing functions performing the analysis
 ###############
 
-# set interresults = F if you do not want to rely on pre-computed intermediate results
-# Warning: time consuming (several days)... to be run on a computing cluster
+# set interresults = FALSE if you want to (re-) compute the intermediate results
 
 interresults <- TRUE
 if (!interresults) {
@@ -20,7 +19,8 @@ source("simulation.R") # Executes the script that simulates datasets under the f
 		       # Warning: some differences in the 13rd digit after the coma point have been reported for some simulated values 
 		       # depending on the operating system and may affect the results 
 source("scalability.R") # Executes the script that runs models to test scalability of the approach (uses data stored in subfolder "data_scalability"
-			# and writes in subfolder "intermediate_results/fit_scalability") 
+			# and writes in subfolder "intermediate_results/fit_scalability")
+			# Warning: very time consuming... to be run on a computing cluster 
 }
 
 ###############

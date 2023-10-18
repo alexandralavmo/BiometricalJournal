@@ -12,18 +12,16 @@ source("functions.R")
 # 1. Runing functions performing the analysis
 ###############
 
-# Warning: the intermediate results are not provided in this version of the code
-# Please, refer to the README file for further details
+# set interresults = TRUE if you want to rely on intermediate results (beware that the intermediate results are not provided in this version)
+# the version with intermediate results is available at https://github.com/alexandralavmo/BiometricalJournal/tree/main/codeIR)
 
-# Executes the script that fits all the univariate joint models with the linear modeling (writes in subfolder 
-# "intermediate_results/uni_fits/lin")
-# Warning: time consuming (several days)... to be run on a computing cluster
-source("fit.R")  
-
-# Executes the script that fits the univariate joint models with the nonlinear modeling (writes in subfolder 
-# "intermediate_results/uni_fits/nonlin")
-# Warning: time consuming (several days)... to be run on a computing cluster
-source("fit_nl.R") 
+interresults <- FALSE
+if (!interresults) {
+source("fit.R") # Executes this script that fits all the univariate joint models with the linear modeling (writes in subfolder "intermediate_results/uni_fits/lin")
+		# Warning: time consuming... to be run on a computing cluster
+source("fit_nl.R") # Executes the script that fits the univariate joint models with the nonlinear modeling (writes in subfolder "intermediate_results/uni_fits/nonlin")
+		   # Warning: time consuming... to be run on a computing cluster
+}
 
 ###############
 # 2. Creating Table S4 

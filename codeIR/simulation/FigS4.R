@@ -11,8 +11,7 @@ source("functions.R")
 # 1. Runing functions performing the analysis
 ###############
 
-# set interresults = F if you do not want to rely on pre-computed intermediate results
-# Warning: time consuming (several days)... to be run on a computing cluster
+# set interresults = FALSE if you want to (re-) compute the intermediate results
 
 interresults <- TRUE
 if (!interresults) {
@@ -21,6 +20,7 @@ source("simulation2.R") # Executes the script that simulates datasets under the 
 			# depending on the operating system and may affect the results 
 source("backward2.R") # Executes the script that performs the backward process on all the simulated data sets under the strong scenario of correlation 
 		      # (uses data stored in folder "data2" and writes in subfolder "intermediate_results/backward2") 
+		      # Warning: very time consuming... to be run on a computing cluster
 } 
 
 ###############

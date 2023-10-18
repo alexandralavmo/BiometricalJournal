@@ -12,13 +12,14 @@ source("functions.R")
 # 1. Runing functions performing the analysis
 ###############
 
-# set interresults = F if you do not want to rely on pre-computed intermediate results
-# Warning: time consuming (several days)... to be run on a computing cluster
+# set interresults = FALSE if you want to (re-) compute the intermediate results
 
 interresults <- TRUE
 if (!interresults) {
 source("fit.R") # Executes this script that fits all the univariate joint models with the linear modeling (writes in subfolder "intermediate_results/uni_fits/lin")
+		# Warning: time consuming... to be run on a computing cluster
 source("fit_nl.R") # Executes the script that fits the univariate joint models with the nonlinear modeling (writes in subfolder "intermediate_results/uni_fits/nonlin")
+		   # Warning: time consuming... to be run on a computing cluster
 }
 
 ###############

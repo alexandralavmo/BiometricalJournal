@@ -11,27 +11,24 @@ source("functions.R")
 # 1. Runing functions performing the analysis
 ###############
 
-# Warning: the intermediate results are not provided in this version of the code
-# Please, refer to the README file for further details
+# set interresults = TRUE if you want to rely on intermediate results (beware that the intermediate results are not provided in this version)
+# the version with intermediate results is available at https://github.com/alexandralavmo/BiometricalJournal/tree/main/codeIR)
 
-# Executes the script that simulates datasets under the first scenario of correlation (writes in subfolder "data") 
-# Warning: some differences in the 13rd digit after the coma point have been reported for some simulated values 
-# depending on the operated system and may affect the results 
-source("simulation.R")
+interresults <- FALSE
+if (!interresults) {
+source("simulation.R") # Executes the script that simulates datasets under the first scenario of correlation (writes in subfolder "data")
+		       # Warning: some differences in the 13rd digit after the coma point have been reported for some simulated values 
+		       # depending on the operating system and may affect the results 
+source("fit.R") # Executes the script that fits the true joint model on all the simulated data sets (uses data stored in subfolder "data" 
+		# and writes in subfolder "intermediate_results/fit_truemodel")
+		# Warning: very time consuming... to be run on a computing cluster
+source("backward.R") # Executes the script that performs the backward selection process on all simulated datasets under first scenario of correlation 
+		     # (uses data stored in folder "data" and writes in subfolder "intermediate_results/backward")
+		     # Warning: very time consuming... to be run on a computing cluster
+source("eval_AUC.R") # Executes the script that computes ROC AUC under true and final model (uses subfolders "intermediate_results/fit_truemodel" 
+		     # and "intermediate_results/backward", and writes in subfolder "intermediate_results/eval_AUC") 
+}
 
-# Executes the script that fits the true joint model on all the simulated data sets (uses data stored in subfolder "data" and 
-# writes in subfolder "intermediate_results/fit_truemodel")
-# Warning: very time consuming (several days)... to be run on a computing cluster
-source("fit.R") 
-
-# Executes the script that performs the backward selection process on all simulated datasets under the first scenario of correlation 
-# (uses data stored in folder "data" and writes in subfolder "intermediate_results/backward")
-# Warning: very time consuming (several days)... to be run on a computing cluster
-source("backward.R") 
-
-# Executes the script that computes ROC AUC under the true and final models (uses subfolders "intermediate_results/fit_truemodel" 
-# and "intermediate_results/backward", and writes in subfolder "intermediate_results/eval_AUC") 
-source("eval_AUC.R")
 
 ###############
 # 1. Importation of results

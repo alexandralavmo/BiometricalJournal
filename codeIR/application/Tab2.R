@@ -12,13 +12,12 @@ source("functions.R")
 # 1. Runing functions performing the analysis
 ###############
 
-# set interresults = F if you do not want to rely on pre-computed intermediate results
+# set interresults = FALSE if you want to (re-) compute the intermediate results
 
 interresults <- TRUE
 if (!interresults) {
 source("fit_bsl.R") # Executes the script that fits the baseline model (writes in subfolder "intermediate_results/bsl_fit")
 }
-
 
 ###############
 # 2. Creating Table 2 

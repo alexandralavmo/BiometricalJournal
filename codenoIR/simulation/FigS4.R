@@ -11,18 +11,18 @@ source("functions.R")
 # 1. Runing functions performing the analysis
 ###############
 
-# Warning: the intermediate results are not provided in this version of the code
-# Please, refer to the README file for further details
+# set interresults = TRUE if you want to rely on intermediate results (beware that the intermediate results are not provided in this version)
+# the version with intermediate results is available at https://github.com/alexandralavmo/BiometricalJournal/tree/main/codeIR)
 
-# Executes the script that simulates datasets under the strong scenario of correlation (writes in subfolder "data2") 
-# Warning: some differences in the 13rd digit after the coma point have been reported for some simulated values 
-# depending on the operated system and may affect the results 
-source("simulation2.R")
-
-# Executes the script that performs the backward selection process on all simulated datasets under the strong scenario of correlation 
-# (uses data stored in folder "data2" and writes in subfolder "intermediate_results/backward2")
-# Warning: very time consuming (several days)... to be run on a computing cluster
-source("backward2.R")
+interresults <- FALSE
+if (!interresults) {
+source("simulation2.R") # Executes the script that simulates datasets under the strong scenario of correlation (writes in subfolder "data2")
+			# Warning: some differences in the 13rd digit after the coma point have been reported for some simulated values 
+			# depending on the operating system and may affect the results 
+source("backward2.R") # Executes the script that performs the backward process on all the simulated data sets under the strong scenario of correlation 
+		      # (uses data stored in folder "data2" and writes in subfolder "intermediate_results/backward2") 
+		      # Warning: very time consuming... to be run on a computing cluster
+} 
 
 ###############
 # 2. Creating Figure S4
