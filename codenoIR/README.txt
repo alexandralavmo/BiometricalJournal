@@ -67,8 +67,7 @@ subfolder "intermediate_results": is devoted to store intermediate results, and 
 
 To reproduce a single figure or table, just run the R script whose name corresponds to the figure or table name 
 (e.g. To reproduce Figure 1, you must run Fig1.R; to reproduce Table S1, you must run TabS1.R)
-By default, these scripts compute all needed intermediate results from scratch. Beware that, since intermediate results are not provided in this 
-version of the code, it will likely raise an error. Another version of the code, in which intermediate results are provided, is available at
+By default, these scripts compute all needed intermediate results from scratch. Another version of the code, in which intermediate results are provided, is available at
 https://github.com/alexandralavmo/BiometricalJournal/tree/main/codeIR
 
 The location where intermediate results are stored is explicitly indicated in each file.
@@ -100,8 +99,7 @@ subfolder "data_scalability": contains the simulated data sets to test scalabili
 
 To reproduce a single figure or table, just run the R script whose name corresponds to the figure or table name 
 (e.g. To reproduce Figure 6, you must run Fig6.R; to reproduce Table 6, you must run Tab6.R)
-By default, these scripts compute all needed intermediate results from scratch. Beware that, since intermediate results are not provided in this 
-version of the code, it will likely raise an error. Another version of the code, in which intermediate results are provided, is available at
+By default, these scripts compute all needed intermediate results from scratch. Another version of the code, in which intermediate results are provided, is available at
 https://github.com/alexandralavmo/BiometricalJournal/tree/main/codeIR
 
 The location where intermediate results are stored is explicitly indicated in each file.
